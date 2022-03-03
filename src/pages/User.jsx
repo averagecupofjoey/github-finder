@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom"
 import RepoList from "../components/repos/RepoList"
 import Spinner from "../components/layout/Spinner"
 import GithubContext from "../context/github/GithubContext"
-import { getUser, getUserAndRepos, getUserRepos } from "../context/github/GithubActions"
+import { getUserAndRepos } from "../context/github/GithubActions"
 
 function User() {
 
@@ -21,7 +21,7 @@ function User() {
       dispatch({type: "GET_USER_AND_REPOS", payload: userData})
     }
     getUserData()
-  }, [])
+  }, [dispatch, params.login])
 
     const {
     name,
@@ -54,7 +54,7 @@ function User() {
         <div className="custom-card-image mb-6 md:mb-0">
           <div className="rounded-lg shadow-xl card image-full">
             <figure>
-              <img src={avatar_url} />
+              <img src={avatar_url} alt='' />
             </figure>
             <div className="card-body justify-end">
               <h2 className="card-title mb-0">
